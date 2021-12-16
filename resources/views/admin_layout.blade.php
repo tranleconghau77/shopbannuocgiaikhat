@@ -79,13 +79,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <img alt="" src="{{asset('backend/images/1.png')}}">
-                            <span class="username">John Doe</span>
+                            <span class="username">
+                                <?php
+                                    $name=Session::get('admin_name');
+                                    if($name){
+                                        echo $name;
+                                    }
+                                ?>
+                            </span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
                             <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
                             <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                            <li><a href="login.html"><i class="fa fa-key"></i> Log Out</a></li>
+                            <li><a href="{{URL::to('/logout')}}"><i class="fa fa-key"></i> Log Out</a></li>
                         </ul>
                     </li>
                     <!-- user login dropdown end -->

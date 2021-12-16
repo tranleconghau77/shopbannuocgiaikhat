@@ -23,4 +23,5 @@ Route::get('/trang-chu', [HomeController::class, 'index']);
 //Backend UI
 Route::get('/admin', [AdminController::class, 'index']);
 Route::get('/dashboard', [AdminController::class, 'show_dashboard']);
+Route::get('/logout', [AdminController::class, 'log_out']);
 Route::post('/admin-dashboard', [AdminController::class, 'dashboard']);
