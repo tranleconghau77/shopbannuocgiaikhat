@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
 
+
+//Front-end UI
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/trang-chu', [HomeController::class, 'index']);
+
+//Backend UI
+Route::get('/admin', [AdminController::class, 'index']);
+Route::get('/dashboard', [AdminController::class, 'show_dashboard']);
+Route::post('/admin-dashboard', [AdminController::class, 'dashboard']);
