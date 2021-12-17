@@ -118,11 +118,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <li class="sub-menu">
                             <a href="javascript:;">
                                 <i class="fa fa-book"></i>
-                                <span>Products</span>
+                                <span>Category Product</span>
                             </a>
                             <ul class="sub">
-                                <li><a href="typography.html">Add Products</a></li>
-                                <li><a href="glyphicon.html">Report</a></li>
+                                <li><a href="{{URL::to('/add-category-product')}}">Add Category Product</a></li>
+                                <li><a href="{{URL::to('/all-category-product')}}">List Categories Product</a></li>
 
                             </ul>
 
