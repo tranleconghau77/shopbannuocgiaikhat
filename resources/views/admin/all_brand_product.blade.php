@@ -53,37 +53,37 @@
                         Session::put('message', null);
                     }
                     ?>
-                    @foreach($all_category_product as $key=>$cate_pro)
+                    @foreach($all_brand_product as $key=>$brand_pro)
                     <tr>
                         <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label>
                         </td>
-                        <td>{{$cate_pro->category_name}}</td>
+                        <td>{{$brand_pro->brand_name}}</td>
                         <td><span class="text-ellipsis">
                                 <?php
-                                    if ($cate_pro->category_status == 0) {
+                                    if ($brand_pro->brand_status == 0) {
                                         ?>
-                                <a href="{{URL::to('/active-category-status'.$cate_pro->category_id)}}"><i
+                                <a href="{{URL::to('/active-brand-status'.$brand_pro->brand_id)}}"><i
                                         class='fas fa-eye-slash'></i></a>
 
                                 <?php
                                     } 
                                     else {
                                         ?>
-                                <a href="{{URL::to('/unactive-category-status'.$cate_pro->category_id)}}">
+                                <a href="{{URL::to('/unactive-brand-status'.$brand_pro->brand_id)}}">
                                     <i class='fas fa-eye'></i></a>
                                 <?php
                                         }
                                         ?>
 
                             </span></td>
-                        <td><span class="text-ellipsis">{{$cate_pro->created_at}}</span></td>
+                        <td><span class="text-ellipsis">{{$brand_pro->created_at}}</span></td>
                         <td>
-                            <a href="{{URL::to('/edit-category-product'.$cate_pro->category_id)}}" class="active"
+                            <a href="{{URL::to('/edit-brand-product'.$brand_pro->brand_id)}}" class="active"
                                 ui-toggle-class="">
                                 <i class="fas fa-pen-square text-success text-active"></i></a>
-                            <a onclick="return confirm('Do you want to delete this category')"
-                                href="{{URL::to('/delete-category-product'.$cate_pro->category_id)}}"
-                                class="active delete-category" ui-toggle-class="">
+                            <a onclick="return confirm('Do you want to delete this brand product')"
+                                href="{{URL::to('/delete-brand-product'.$brand_pro->brand_id)}}"
+                                class="active delete-brand" ui-toggle-class="">
                                 <i class="fa fa-times text-danger text"></i></a>
 
                         </td>

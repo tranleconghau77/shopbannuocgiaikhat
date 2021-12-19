@@ -123,8 +123,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <ul class="sub">
                                 <li><a href="{{URL::to('/add-category-product')}}">Add Category Product</a></li>
                                 <li><a href="{{URL::to('/all-category-product')}}">List Categories Product</a></li>
-
                             </ul>
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fas fa-copyright"></i>
+                                <span>Brand Product</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="{{URL::to('/add-brand-product')}}">Add Brand</a></li>
+                                <li><a href="{{URL::to('/all-brand-product')}}">List Brand</a></li>
+                            </ul>
+
 
                     </ul>
                 </div>
@@ -152,6 +161,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script src="{{asset('backend/js/scripts.js')}}"></script>
     <script src="{{asset('backend/js/jquery.slimscroll.js')}}"></script>
     <script src="{{asset('backend/js/jquery.nicescroll.js')}}"></script>
+
     <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
     <script src="{{asset('backend/js/jquery.scrollTo.js')}}"></script>
     <!-- morris JavaScript -->
