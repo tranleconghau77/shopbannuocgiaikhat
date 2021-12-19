@@ -51,17 +51,29 @@ class CategoryProduct extends Controller
 
     }
 
-    public function update_category_product(Request $request)
+    public function edit_category_product($category_id)
+    {
+        $edit_value = DB::table('tbl_category_product')->where('category_id',$category_id)->first();
+        //$manager_category_product = view('admin.all_category_product')->with('all_category_product', $all_category_product);
+        return view('admin.edit_category_product')->with('edit_value', $edit_value);
+    }
+
+    public function update_category_product(Request $request,$category_id)
     {
         $data = array();
         $data['category_name'] = $request->category_product_name;
         $data['category_desc'] = $request->category_product_desc;
-        $data['category_status'] = $request->category_product_status;
-        $data['meta_keywords'] = strtolower($request->category_product_name);
-        $data['slug_category_product'] = strtolower($request->category_product_name);
 
-        DB::table('tbl_category_product')->insert($data);
-        Session::put('message', 'Add category product successfully.');
-        return redirect('/add-category-product');
+        DB::table('tbl_category_product')->where('category_id',$category_id)->update($data);
+        Session::put('message', 'Update category product successfully.');
+        return redirect('/all-category-product');
+    }
+
+    public function delete_category_product($category_id)
+    {
+
+        DB::table('tbl_category_product')->where('category_id',$category_id)->delete();
+        Session::put('message', 'Delete category product successfully.');
+        return redirect('/all-category-product');
     }
 }
