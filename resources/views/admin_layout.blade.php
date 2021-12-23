@@ -124,16 +124,29 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <li><a href="{{URL::to('/add-category-product')}}">Add Category Product</a></li>
                                 <li><a href="{{URL::to('/all-category-product')}}">List Categories Product</a></li>
                             </ul>
+                        </li>
+
                         <li class="sub-menu">
                             <a href="javascript:;">
-                                <i class="fas fa-copyright"></i>
+                                <i class="fas fa-bookmark"></i>
                                 <span>Brand Product</span>
                             </a>
                             <ul class="sub">
                                 <li><a href="{{URL::to('/add-brand-product')}}">Add Brand</a></li>
                                 <li><a href="{{URL::to('/all-brand-product')}}">List Brand</a></li>
                             </ul>
+                        </li>
 
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fab fa-product-hunt"></i>
+                                <span>Product</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="{{URL::to('/add-product')}}">Add Product</a></li>
+                                <li><a href="{{URL::to('/all-product')}}">List Product</a></li>
+                            </ul>
+                        </li>
 
                     </ul>
                 </div>
