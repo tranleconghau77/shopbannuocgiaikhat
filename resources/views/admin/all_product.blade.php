@@ -6,7 +6,7 @@
 <div class="table-agile-info">
     <div class="panel panel-default">
         <div class="panel-heading">
-            List Category
+            List Product
         </div>
         <div class="row w3-res-tb">
             <div class="col-sm-5 m-b-xs">
@@ -38,9 +38,12 @@
                                 <input type="checkbox"><i></i>
                             </label>
                         </th>
-                        <th>Name Category</th>
+                        <th>Name Product</th>
+                        <th>Price</th>
+                        <th>Image</th>
+                        <th>Category</th>
+                        <th>Brand</th>
                         <th>Display</th>
-                        <th>Created at</th>
                         <th style="width:30px;"></th>
                     </tr>
                 </thead>
@@ -53,39 +56,44 @@
                         Session::put('message', null);
                     }
                     ?>
-                    @foreach($all_brand_product as $key=>$brand_pro)
+                    @foreach($all_product as $key=>$product)
                     <tr>
                         <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label>
                         </td>
-                        <td>{{$brand_pro->brand_name}}</td>
+                        <td>{{$product->product_name}}</td>
+                        <td><span class="text-ellipsis">{{$product->product_price}}</span></td>
+
+                        <td><span class="text-ellipsis"><img
+                                    src="{{url('backend/uploads/product', $product->product_image)}}" alt="" width="50"
+                                    height="50"></span></td>
+                        <td><span class="text-ellipsis">{{$product->category_name}}</span></td>
+                        <td><span class="text-ellipsis">{{$product->brand_name}}</span></td>
                         <td><span class="text-ellipsis">
                                 <?php
-                                    if ($brand_pro->brand_status == 0) {
+                                    if ($product->product_status == 0) {
                                         ?>
-                                <a href="{{URL::to('/active-brand-status/'.$brand_pro->brand_id)}}"><i
+                                <a href="{{URL::to('/active-product-status/'.$product->product_id)}}"><i
                                         class='fas fa-eye-slash'></i></a>
 
                                 <?php
                                     } 
                                     else {
                                         ?>
-                                <a href="{{URL::to('/unactive-brand-status/'.$brand_pro->brand_id)}}">
+                                <a href="{{URL::to('/unactive-product-status/'.$product->product_id)}}">
                                     <i class='fas fa-eye'></i></a>
                                 <?php
                                         }
                                         ?>
 
                             </span></td>
-                        <td><span class="text-ellipsis">{{$brand_pro->created_at}}</span></td>
                         <td>
-                            <a href="{{URL::to('/edit-brand-product/'.$brand_pro->brand_id)}}" class="active"
+                            <a href="{{URL::to('/edit-product/'.$product->product_id)}}" class="active"
                                 ui-toggle-class="">
                                 <i class="fas fa-pen-square text-success text-active"></i></a>
-                            <a onclick="return confirm('Do you want to delete this brand product')"
-                                href="{{URL::to('/delete-brand-product/'.$brand_pro->brand_id)}}"
-                                class="active delete-brand" ui-toggle-class="">
+                            <a onclick="return confirm('Do you want to delete this product')"
+                                href="{{URL::to('/delete-product/'.$product->product_id)}}"
+                                class="active delete-product" ui-toggle-class="">
                                 <i class="fa fa-times text-danger text"></i></a>
-
                         </td>
                     </tr>
                     @endforeach
@@ -111,9 +119,6 @@
             </div>
         </footer>
     </div>
-
-
-
 
     <!-- page end-->
 </div>

@@ -11,7 +11,7 @@
             </header>
             <div class="panel-body">
                 <div class="position-center">
-                    <form role="form" action="{{URL::to('/update-category-product'.$edit_value->category_id)}}"
+                    <form role="form" action="{{URL::to('/update-category-product/'.$edit_value->category_id)}}"
                         method="POST">
                         {{csrf_field()}}
                         <div class="form-group">

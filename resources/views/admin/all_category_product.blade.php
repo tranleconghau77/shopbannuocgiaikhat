@@ -62,14 +62,14 @@
                                 <?php
                                     if ($cate_pro->category_status == 0) {
                                         ?>
-                                <a href="{{URL::to('/active-category-status'.$cate_pro->category_id)}}"><i
+                                <a href="{{URL::to('/active-category-status/'.$cate_pro->category_id)}}"><i
                                         class='fas fa-eye-slash'></i></a>
 
                                 <?php
                                     } 
                                     else {
                                         ?>
-                                <a href="{{URL::to('/unactive-category-status'.$cate_pro->category_id)}}">
+                                <a href="{{URL::to('/unactive-category-status/'.$cate_pro->category_id)}}">
                                     <i class='fas fa-eye'></i></a>
                                 <?php
                                         }
@@ -78,14 +78,13 @@
                             </span></td>
                         <td><span class="text-ellipsis">{{$cate_pro->created_at}}</span></td>
                         <td>
-                            <a href="{{URL::to('/edit-category-product'.$cate_pro->category_id)}}" class="active"
+                            <a href="{{URL::to('/edit-category-product/'.$cate_pro->category_id)}}" class="active"
                                 ui-toggle-class="">
                                 <i class="fas fa-pen-square text-success text-active"></i></a>
                             <a onclick="return confirm('Do you want to delete this category')"
-                                href="{{URL::to('/delete-category-product'.$cate_pro->category_id)}}"
+                                href="{{URL::to('/delete-category-product/'.$cate_pro->category_id)}}"
                                 class="active delete-category" ui-toggle-class="">
                                 <i class="fa fa-times text-danger text"></i></a>
-
                         </td>
                     </tr>
                     @endforeach
