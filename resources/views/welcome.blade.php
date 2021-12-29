@@ -17,6 +17,9 @@
     <link href="{{asset('frontend/css/main.css')}}" rel="stylesheet" />
     <link href="{{asset('frontend/css/owl.carousel.min.css')}}" rel="stylesheet" />
     <link href="{{asset('frontend/css/responsive.css')}}" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.slim.js"
+        integrity="sha512-HNbo1d4BaJjXh+/e6q4enTyezg5wiXvY3p/9Vzb20NIvkJghZxhzaXeffbdJuuZSxFhJP87ORPadwmU9aN3wSA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
     <!--[if lt IE 9]>
@@ -102,11 +105,36 @@
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
-                                <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
                                 <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-                                <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                                <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                                <li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+                                <?php 
+                                        $customer_id=Session::get('customer_id');
+                                            if($customer_id!=NULL){
+                                ?>
+                                <li><a href="{{URL::to('/checkout')}}"><i class="fa fa-crosshairs"></i> Checkout</a>
+                                    <?php 
+                                        }else{
+                                ?>
+                                <li><a href="{{URL::to('/login-checkout')}}"><i
+                                            class="fa fa-crosshairs"></i>Checkout</a></li>
+                                <?php
+                                            }
+                                        ?>
+                                </li>
+                                <li><a href="{{URL::to('/show-cart')}}"><i class="fa fa-shopping-cart"></i> Cart</a>
+                                </li>
+                                <?php 
+                                        $customer_id=Session::get('customer_id');
+                                            if($customer_id!=NULL){
+                                        ?>
+
+                                <li><a href="{{URL::to('/logout')}}"><i class="fa fa-lock"></i>Log out</a></li>
+                                <?php 
+                                            }else{
+                                                ?>
+                                <li><a href="{{URL::to('/login')}}"><i class="fa fa-lock"></i>Log in</a></li>
+                                <?php
+                                            }
+                                        ?>
                             </ul>
                         </div>
                     </div>
@@ -119,7 +147,7 @@
             <!--header-bottom-->
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-9">
+                    <div class="col-sm-8">
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle" data-toggle="collapse"
                                 data-target=".navbar-collapse">
@@ -131,14 +159,45 @@
                         </div>
                         <div class="mainmenu pull-left">
                             <ul class="nav navbar-nav collapse navbar-collapse">
-                                <li><a href="/trang-chu" class="active">Home</a></li>
+                                <li><a href="/home" class="active">Home</a></li>
                                 <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">Products</a></li>
-                                        <li><a href="product-details.html">Product Details</a></li>
-                                        <li><a href="checkout.html">Checkout</a></li>
-                                        <li><a href="cart.html">Cart</a></li>
-                                        <li><a href="login.html">Login</a></li>
+                                        <li><a href="{{URL::to('/home')}}">Products</a></li>
+                                        <?php
+                                   $customer_id = Session::get('customer_id');
+                                   $shipping_id = Session::get('shipping_id');
+                                   if($customer_id!=NULL && $shipping_id==NULL){ 
+                                 ?>
+                                        <li><a href="{{URL::to('/checkout')}}"><i class="fa fa-crosshairs"></i>
+                                                Payment</a></li>
+
+                                        <?php
+                                 }elseif($customer_id!=NULL && $shipping_id!=NULL){
+                                 ?>
+                                        <li><a href="{{URL::to('/payment')}}"><i class="fa fa-crosshairs"></i>
+                                                Payment</a></li>
+                                        <?php 
+                                }else{
+                                ?>
+                                        <li><a href="{{URL::to('/login')}}"><i class="fa fa-crosshairs"></i> Payment</a>
+                                        </li>
+                                        <?php
+                                 }
+                                ?>
+
+                                        <li><a href="{{URL::to('/show-cart')}}">Cart</a></li>
+                                        <?php 
+                                        $customer_id=Session::get('customer_id');
+                                            if($customer_id!=NULL){
+                                        ?>
+                                        <li><a href="{{URL::to('/logout')}}">Log out</a></li>
+                                        <?php 
+                                            }else{
+                                                ?>
+                                        <li><a href="{{URL::to('/login')}}">Log in</a></li>
+                                        <?php
+                                            }
+                                        ?>
                                     </ul>
                                 </li>
                                 <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
@@ -152,10 +211,14 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-sm-3">
-                        <div class="search_box pull-right">
-                            <input type="text" placeholder="Search" />
-                        </div>
+                    <div class="col-sm-4">
+                        <form action="{{URL::to('/search-product')}}" method="post">
+                            <div class="search_box pull-right">
+                                {{csrf_field()}}
+                                <input type="text" name="keywords" placeholder="Search" />
+                                <input type="submit" class="btn btn-primary btn-sm" value="Search" style="margin-top:0">
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -318,13 +381,13 @@
                                         </div>
                                     </div>
 
-                                    <div class="choose">
+                                    <!-- <div class="choose">
                                         <ul class="nav nav-pills nav-justified">
                                             <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a>
                                             </li>
                                             <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
                                         </ul>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
 
@@ -501,7 +564,7 @@
     <!--/Footer-->
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="{{asset('frontend/js/jquery.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="{{asset('frontend/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('frontend/js/jquery.scrollUp.min.js')}}"></script>
     <script src="{{asset('frontend/js/price-range.js')}}"></script>
@@ -510,9 +573,50 @@
     <script src="{{asset('frontend/js/recommand_product_slider.js')}}"></script>
     <script src="{{asset('frontend/js/main.js')}}"></script>
     <script>
-    $(".add-to-cart").click(function(e) {
-        e.preventDefault();
-        swal("Hello world!");
+    $(document).ready(function() {
+        $('.add-to-cart').click(function() {
+            var id = $(this).data('id_product');
+            var cart_product_id = $('.cart_product_id_' + id).val();
+            var cart_product_name = $('.cart_product_name_' + id).val();
+            var cart_product_image = $('.cart_product_image_' + id).val();
+            var cart_product_price = $('.cart_product_price_' + id).val();
+            var cart_product_qty = $('.cart_product_qty_' + id).val();
+            var _token = $('input[name="_token"]').val();
+
+            $.ajax({
+                url: "{{URL('/add-cart-ajax')}}",
+                method: "post",
+
+                data: {
+                    cart_product_id: cart_product_id,
+                    cart_product_name: cart_product_name,
+                    cart_product_image: cart_product_image,
+                    cart_product_price: cart_product_price,
+                    cart_product_qty: cart_product_qty,
+                    _token: _token,
+                },
+                success: function(data) {
+                    swal({
+                        title: "Added product successfully",
+                        text: "Do you go the cart?",
+                        icon: "success",
+                        buttons: true,
+                        dangerMode: true,
+                    }).then((willDelete) => {
+                        if (willDelete) {
+                            window.location.href = '/show-cart';
+                        } else {
+                            return;
+                        }
+                    });;
+
+                }
+
+
+            });
+
+
+        });
     });
     </script>
 

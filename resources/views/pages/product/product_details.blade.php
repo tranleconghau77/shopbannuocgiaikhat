@@ -59,8 +59,11 @@
                 <span>
                     <h2>{{number_format($pro->product_price)}}<span style="font-size:16px; float:none">đ</span></h2>
                     <label>Quantity:</label>
-                    <input type="number" name="quantity" min="1" value="1" />
-                    <input type="hidden" name="productid_hidden" value="{{$pro->product_id}}" />
+                    <input type="number" name="cart_product_qty" min="1" value="1" />
+                    <input type="hidden" class="" value="{{$pro->product_id}}" name="cart_product_id">
+                    <input type="hidden" class="" value="{{$pro->product_name}}" name="cart_product_name">
+                    <input type="hidden" class="" value="{{$pro->product_image}}" name="cart_product_image">
+                    <input type="hidden" class="" value="{{$pro->product_price}}" name="cart_product_price">
                     <button type="submit" class="btn btn-fefault cart">
                         <i class="fa fa-shopping-cart"></i>
                         Add to cart
