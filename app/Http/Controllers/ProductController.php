@@ -165,4 +165,17 @@ class ProductController extends Controller
         ->join('tbl_brand','tbl_product.brand_id','=','tbl_brand.brand_id')->where('product_id',$product_id)->get();
         return view('pages.product.product_details')->with('all_brand',$all_brand)->with('all_category',$all_category)->with('all_product',$all_product)->with('product',$product);
     }
+
+    public function search_product(Request $request){
+        $data=$request->keywords;
+
+        $all_brand=DB::table('tbl_brand')->where('brand_status','1')->get();
+        $all_product=DB::table('tbl_product')->where('product_status','1')->get();
+        $all_category=DB::table('tbl_category_product')->where('category_status','1')->get();
+
+        $result_search=DB::table('tbl_product')->where('product_status','1')->where('product_name','like','%'.$data.'%')->get();
+
+      
+        return view('pages.product.search_product')->with('all_product',$all_product)->with('all_brand',$all_brand)->with('all_category',$all_category)->with('result_search',$result_search);
+    }
 }

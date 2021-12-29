@@ -4,7 +4,7 @@
     <!--features_items-->
     <h2 class="title text-center">Features Items</h2>
 
-    @foreach($all_product as $key=>$all_pro)
+    @foreach($result_search as $key=>$all_pro)
     <div class="col-sm-4">
         <div class="product-image-wrapper">
             <div class="single-products">

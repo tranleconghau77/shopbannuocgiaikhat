@@ -17,6 +17,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BrandProduct;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 //Backend UI
@@ -69,13 +71,31 @@ Route::get('/unactive-product-status/{product_id}', [ProductController::class, '
 //Home page
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/trang-chu', [HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index']);
 Route::get('/category-product-home/{category_id}', [CategoryProduct::class, 'show_category_home']);
 Route::get('/brand-product-home/{brand_id}', [CategoryProduct::class, 'show_brand_home']);
 
-//Product detail
+//Product 
+//Details product
 Route::get('/product-details/{product_id}', [ProductController::class, 'product_details']);
+//Search product
+Route::post('/search-product', [ProductController::class, 'search_product']);
+
 
 //Cart
 Route::post('/save-cart', [CartController::class, 'save_cart']);
+Route::post('/update-cart', [CartController::class, 'update_cart']);
 Route::get('/show-cart', [CartController::class, 'show_cart']);
+Route::get('/delete-cart-product/{session_id}', [CartController::class, 'delete_cart_product']);
+//add cart ajax
+Route::post('/add-cart-ajax', [CartController::class, 'add_cart_ajax']);
+
+Route::get('/login',[AuthController::class, 'login']);
+Route::get('/logout',[AuthController::class, 'logout']);
+Route::get('/register',[AuthController::class, 'register']);
+Route::post('/save-login',[AuthController::class, 'save_login']);
+Route::post('/save-customer',[AuthController::class,'save_customer']);
+
+Route::get('/checkout',[CheckoutController::class,'checkout']);
+Route::get('/payment',[CheckoutController::class,'payment']);
+Route::post('/save-shipping-information',[CheckoutController::class,'save_shipping_information']);
