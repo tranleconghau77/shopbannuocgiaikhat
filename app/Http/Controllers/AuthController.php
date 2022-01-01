@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use DB;
+use App\Models\Brand;
+use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Session;
 
@@ -11,7 +12,7 @@ session_start();
 
 class AuthController extends Controller
 {
-    //LOGIN
+    //LOGIN page FE
     public function login(){
         $all_brand=DB::table('tbl_brand')->where('brand_status','1')->get();
         $all_category=DB::table('tbl_category_product')->where('category_status','1')->get();

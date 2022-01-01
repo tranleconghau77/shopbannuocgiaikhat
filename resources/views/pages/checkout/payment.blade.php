@@ -86,6 +86,9 @@
                         </td>
                         <td>
                             <h3>{{number_format($total_money)}}đ</h3>
+                            <?php
+                                Session::put('total_money',$total_money);
+                            ?>
                         </td>
                     </tr>
                 </tbody>
@@ -96,16 +99,17 @@
         <h4>Choose option payment:</h4>
     </div>
     <div>
-        <form action="">
+        <form action="{{URL::to('/order-place')}}" method="POST">
+            {{csrf_field()}}
             <div class="payment-options" style="margin-top:0">
                 <span>
-                    <label><input type="checkbox" name="payment_option" value="atm"> ATM</label>
+                    <label><input type="checkbox" name="payment_option" value="1"> ATM</label>
                 </span>
                 <span>
-                    <label><input type="checkbox" name="payment_option" value="cash"> Cash</label>
+                    <label><input type="checkbox" name="payment_option" value="2"> Cash</label>
                 </span>
                 <span>
-                    <label><input type="checkbox" name="payment_option" value="paypal"> Paypal</label>
+                    <label><input type="checkbox" name="payment_option" value="3"> Paypal</label>
                 </span>
                 <input type="submit" name="send_order" style="margin:0" value="ORDER"
                     class="check_out btn btn-default btn-sm">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use App\Models\ProductModel;
 use Illuminate\Http\Request;
 use Session;
 

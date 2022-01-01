@@ -11,7 +11,8 @@
             </header>
             <div class="panel-body">
                 <div class="position-center">
-                    <form role="form" action="{{URL::to('/update-brand-product'.$edit_value->brand_id)}}" method="POST">
+                    <form role="form" action="{{URL::to('/update-brand-product/'.$edit_value->brand_id)}}"
+                        method="POST">
                         {{csrf_field()}}
                         <div class="form-group">
                             <label for="exampleInputEmail1">Brand Name</label>
