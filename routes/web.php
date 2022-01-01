@@ -19,13 +19,15 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\OrderController;
+
 use Illuminate\Support\Facades\Route;
 
 //Backend UI
 //Admin
 Route::get('/admin', [AdminController::class, 'index']);
 Route::get('/dashboard', [AdminController::class, 'show_dashboard']);
-Route::get('/logout', [AdminController::class, 'log_out']);
+Route::get('/logout-admin', [AdminController::class, 'log_out']);
 Route::post('/admin-dashboard', [AdminController::class, 'dashboard']);
 
 //Category Product
@@ -64,6 +66,13 @@ Route::get('/delete-product/{product_id}', [ProductController::class, 'delete_pr
 //Display product
 Route::get('/active-product-status/{product_id}', [ProductController::class, 'active_product_status']);
 Route::get('/unactive-product-status/{product_id}', [ProductController::class, 'unactive_product_status']);
+
+//Manager Order
+Route::get('/manage-order', [OrderController::class, 'manage_order']);
+Route::get('/view-order/{order_id}', [OrderController::class, 'view_order']);
+Route::get('/delete-order/{order_id}', [OrderController::class, 'delete_order']);
+
+
 //End BE UI
 
 
@@ -73,7 +82,7 @@ Route::get('/unactive-product-status/{product_id}', [ProductController::class, '
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
 Route::get('/category-product-home/{category_id}', [CategoryProduct::class, 'show_category_home']);
-Route::get('/brand-product-home/{brand_id}', [CategoryProduct::class, 'show_brand_home']);
+Route::get('/brand-product-home/{brand_id}', [BrandProduct::class, 'show_brand_home']);
 
 //Product 
 //Details product
@@ -96,6 +105,8 @@ Route::get('/register',[AuthController::class, 'register']);
 Route::post('/save-login',[AuthController::class, 'save_login']);
 Route::post('/save-customer',[AuthController::class,'save_customer']);
 
+//check out
 Route::get('/checkout',[CheckoutController::class,'checkout']);
 Route::get('/payment',[CheckoutController::class,'payment']);
+Route::post('/order-place',[CheckoutController::class,'order_place']);
 Route::post('/save-shipping-information',[CheckoutController::class,'save_shipping_information']);

@@ -322,8 +322,8 @@
                             <div class="brands-name">
                                 <ul class="nav nav-pills nav-stacked">
                                     @foreach($all_brand as $key=>$all_bra)
-                                    <li><a href="{{URL::to('/brand-product-home/'.$all_bra->brand_id)}}"> <span
-                                                class="pull-right">(50)</span>{{$all_bra->brand_name}}</a>
+                                    <li><a href="{{URL::to('/brand-product-home/'.$all_bra->brand_id)}}">
+                                            {{$all_bra->brand_name}}</a>
                                     </li>
                                     @endforeach
                                 </ul>
@@ -333,12 +333,12 @@
 
                         <div class="price-range">
                             <!--price-range-->
-                            <h2>Price Range</h2>
+                            <!-- <h2>Price Range</h2>
                             <div class="well text-center">
                                 <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600"
                                     data-slider-step="5" data-slider-value="[250,450]" id="sl2"><br />
                                 <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
-                            </div>
+                            </div> -->
                         </div>
                         <!--/price-range-->
 
@@ -381,13 +381,7 @@
                                         </div>
                                     </div>
 
-                                    <!-- <div class="choose">
-                                        <ul class="nav nav-pills nav-justified">
-                                            <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a>
-                                            </li>
-                                            <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                                        </ul>
-                                    </div> -->
+
                                 </div>
                             </div>
 
@@ -571,6 +565,7 @@
     <script src="{{asset('frontend/js/jquery.prettyPhoto.js')}}"></script>
     <script src="{{asset('frontend/js/owl.carousel.min.js')}}"></script>
     <script src="{{asset('frontend/js/recommand_product_slider.js')}}"></script>
+    <script src="{{asset('frontend/js/option_payment.js')}}"></script>
     <script src="{{asset('frontend/js/main.js')}}"></script>
     <script>
     $(document).ready(function() {

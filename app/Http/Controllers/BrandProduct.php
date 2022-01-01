@@ -2,8 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use DB;
+
+
 use Illuminate\Http\Request;
+use App\Models\Brand;
+use App\Models\Product;
+use App\Models\Category;
+
+
+
 use Session;
 
 session_start();
@@ -29,8 +36,7 @@ class BrandProduct extends Controller
     public function all_brand_product()
     {
         $this->AuthLogin();
-
-        $all_brand_product = DB::table('tbl_brand')->get();
+        $all_brand_product=Brand::all();
         return view('admin.all_brand_product')->with('all_brand_product', $all_brand_product);
     }
 
@@ -38,13 +44,14 @@ class BrandProduct extends Controller
     {
         $this->AuthLogin();
 
-        $data = array();
+        $data=new Brand();
         $data['brand_name'] = $request->brand_name;
         $data['brand_desc'] = $request->brand_desc;
         $data['brand_status'] = $request->brand_status;
         $data['brand_slug'] = strtolower($request->brand_name);
 
-        DB::table('tbl_brand')->insert($data);
+        $data->save();
+        
         Session::put('message', 'Add brand product successfully.');
         return redirect('/add-brand-product');
     }
@@ -53,8 +60,8 @@ class BrandProduct extends Controller
     {
         $this->AuthLogin();
 
-        DB::table('tbl_product')->where('brand_id',$brand_id)->update(['product_status' => 1]);
-        DB::table('tbl_brand')->where('brand_id',$brand_id)->update(['brand_status' => 1]);
+        Brand::where('brand_id',$brand_id)->update(['brand_status' => 1]);
+        
         Session::put('message','Update display sucessfully.');
         return redirect('/all-brand-product');
     }
@@ -63,8 +70,9 @@ class BrandProduct extends Controller
     {
         $this->AuthLogin();
 
-        DB::table('tbl_product')->where('category_id',$category_id)->update(['product_status' => 0]);
-        DB::table('tbl_brand')->where('brand_id',$brand_id)->update(['brand_status' => 0]);
+        Product::where('brand_id',$brand_id)->update(['product_status' => 0]);
+        Brand::where('brand_id',$brand_id)->update(['brand_status' => 0]);
+        
         Session::put('message','Update display sucessfully.');
         return redirect('/all-brand-product');
 
@@ -74,7 +82,7 @@ class BrandProduct extends Controller
     {
         $this->AuthLogin();
 
-        $edit_value = DB::table('tbl_brand')->where('brand_id',$brand_id)->first();
+        $edit_value = Brand::where('brand_id',$brand_id)->first();
         return view('admin.edit_brand_product')->with('edit_value', $edit_value);
     }
 
@@ -82,11 +90,11 @@ class BrandProduct extends Controller
     {
         $this->AuthLogin();
 
-        $data = array();
+        $data = Brand::find($brand_id);
         $data['brand_name'] = $request->brand_name;
         $data['brand_desc'] = $request->brand_desc;
 
-        DB::table('tbl_brand')->where('brand_id',$brand_id)->update($data);
+        $data->save();
         Session::put('message', 'Update brand product successfully.');
         return redirect('/all-brand-product');
     }
@@ -94,9 +102,20 @@ class BrandProduct extends Controller
     public function delete_brand_product($brand_id)
     {
         $this->AuthLogin();
-
-        DB::table('tbl_brand')->where('brand_id',$brand_id)->delete();
+        $data=Brand::find($brand_id);
+        $data->delete();
         Session::put('message', 'Delete brand product successfully.');
         return redirect('/all-brand-product');
+    }
+
+    public function show_brand_home($brand_id){
+        $all_brand=Brand::all()->where('brand_status','1');
+        $all_product=Product::all()->where('product_status','1');
+        $all_category=Category::all()->where('category_status','1');
+        $product_by_brand_id=Product::with('brand')->where('brand_id',$brand_id)->where('product_status','1')->get();
+       // $all_product=DB::table('tbl_product')->where('product_status','1')->get();
+        
+      
+       return view('pages.brand.show_brand')->with('all_category',$all_category)->with('all_brand',$all_brand)->with('product_by_brand_id',$product_by_brand_id)->with('all_product',$all_product); 
     }
 }

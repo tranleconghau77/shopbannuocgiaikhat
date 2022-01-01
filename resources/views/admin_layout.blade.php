@@ -92,7 +92,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <ul class="dropdown-menu extended logout">
                             <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
                             <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                            <li><a href="{{URL::to('/logout')}}"><i class="fa fa-key"></i> Log Out</a></li>
+                            <li><a href="{{URL::to('/logout-admin')}}"><i class="fa fa-key"></i> Log Out</a></li>
                         </ul>
                     </li>
                     <!-- user login dropdown end -->
@@ -145,6 +145,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <ul class="sub">
                                 <li><a href="{{URL::to('/add-product')}}">Add Product</a></li>
                                 <li><a href="{{URL::to('/all-product')}}">List Product</a></li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fab fa-product-hunt"></i>
+                                <span>Order</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="{{URL::to('/manage-order')}}">Manager Order</a></li>
                             </ul>
                         </li>
 

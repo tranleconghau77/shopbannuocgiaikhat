@@ -10,6 +10,7 @@
     </div>
     <?php
                     $message = Session::get('message');
+                    $cart=Session::get('cart');
                     $productId=Session::get('productId');
                     $product_quantity=Session::get('product_quantity');
                     if ($message) {
@@ -19,6 +20,9 @@
                     $total_money=0;
                     
                     ?>
+    <?php
+    if($cart){
+        ?>
     <div class="table-responsive cart_info">
         <form action="{{URL('/update-cart')}}" method="POST">
             {{csrf_field()}}
@@ -88,17 +92,7 @@
             </table>
         </form>
     </div>
-</section>
-<!--/#cart_items-->
-
-<section id="do_action" style="margin-bottom:0px">
-    <!-- <div class="heading">
-        <h3>What would you like to do next?</h3>
-        <p>Choose if you have a discount code or reward points you want to use or would like to estimate your
-            delivery cost.</p>
-    </div> -->
     <div class="row">
-
         <div class="col-sm-4">
             <div class="total_area">
                 <ul>
@@ -123,7 +117,23 @@
             </div>
         </div>
     </div>
-
+    <?php
+    }else{
+        ?>
+    <h3 style="margin-bottom:200px">Please, buy something before go to the cart!</h3>
+    <?php
+    }
+    ?>
 </section>
+<!--/#cart_items-->
+
+<!-- <section id="do_action" style="margin-bottom:0px"> -->
+<!-- <div class="heading">
+        <h3>What would you like to do next?</h3>
+        <p>Choose if you have a discount code or reward points you want to use or would like to estimate your
+            delivery cost.</p>
+    </div> -->
+
+<!-- </section> -->
 <!--/#do_action-->
 @endsection

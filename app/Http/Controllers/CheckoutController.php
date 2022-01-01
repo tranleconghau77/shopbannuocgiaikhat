@@ -59,5 +59,49 @@ class CheckoutController extends Controller
         return view('pages.checkout.payment')->with('all_category',$all_category)->with('all_brand',$all_brand)->with('all_product',$all_product);
     }
 
+    public function order_place(Request $request){
+        $all_brand=DB::table('tbl_brand')->where('brand_status','1')->get();
+        $all_category=DB::table('tbl_category_product')->where('category_status','1')->get();
+        $all_product=DB::table('tbl_product')->where('product_status','1')->get();
+        
+        //insert data into payment table
+        $data= array();
+        $data['payment_method']=$request->payment_option;
+        $data['payment_status']="Waiting";
+        $payment_id=DB::table('tbl_payment')->insertGetId($data);
+
+        //insert data into order table
+        $order_data= array();
+        $order_data['customer_id']=Session::get('customer_id');
+        $order_data['shipping_id']=Session::get('shipping_id');
+        $order_data['payment_id']=$payment_id;
+        $order_data['order_total']=Session::get('total_money');
+        $order_data['order_status']="Waiting";
+        $order_id=DB::table('tbl_order')->insertGetId($order_data);
+        
+        //insert data into order_details
+        $cart=Session::get('cart');
+        foreach($cart as $key=>$v_cart){
+            $order_details_data= array();
+            $order_details_data['order_id']=$order_id;
+            $order_details_data['product_id']=$v_cart['product_id'];
+            $order_details_data['product_name']=$v_cart['product_name'];
+            $order_details_data['product_price']=$v_cart['product_price'];
+            $order_details_data['product_sales_quantity']=$v_cart['product_qty'];
+            $order_details_data=DB::table('tbl_order_details')->insertGetId($order_details_data);
+        }
+        
+
+        if($data['payment_method']==1){
+            echo"ATM";
+        }elseif($data['payment_method']==2){
+            Session::flush();
+            return view('pages.checkout.handcash')->with('all_category',$all_category)->with('all_brand',$all_brand)->with('all_product',$all_product);
+        }
+        else{
+            echo"Paypal";
+        }
+    }
+
     
 }
