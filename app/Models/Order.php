@@ -14,7 +14,7 @@ class Order extends Model
     protected $table='tbl_order';
 
     public function customer() {
-        return $this->belongsTo('App\Models\Customer','customer_id');
+        return $this->belongsTo('App\Models\Customers','customer_id');
     }
 
     public function shipping() {

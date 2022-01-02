@@ -109,12 +109,10 @@ class BrandProduct extends Controller
     }
 
     public function show_brand_home($brand_id){
-        $all_brand=Brand::all()->where('brand_status','1');
-        $all_product=Product::all()->where('product_status','1');
-        $all_category=Category::all()->where('category_status','1');
+        $all_brand=Brand::where('brand_status','1')->get();
+        $all_product=Product::where('product_status','1')->get();
+        $all_category=Category::where('category_status','1')->get();
         $product_by_brand_id=Product::with('brand')->where('brand_id',$brand_id)->where('product_status','1')->get();
-       // $all_product=DB::table('tbl_product')->where('product_status','1')->get();
-        
       
        return view('pages.brand.show_brand')->with('all_category',$all_category)->with('all_brand',$all_brand)->with('product_by_brand_id',$product_by_brand_id)->with('all_product',$all_product); 
     }
