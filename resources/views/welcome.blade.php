@@ -122,6 +122,8 @@
                                 </li>
                                 <li><a href="{{URL::to('/show-cart')}}"><i class="fa fa-shopping-cart"></i> Cart</a>
                                 </li>
+                                <li><a href="{{URL::to('/history')}}"><i class="fas fa-history"></i>History</a>
+                                </li>
                                 <?php 
                                         $customer_id=Session::get('customer_id');
                                             if($customer_id!=NULL){
@@ -168,18 +170,18 @@
                                    $shipping_id = Session::get('shipping_id');
                                    if($customer_id!=NULL && $shipping_id==NULL){ 
                                  ?>
-                                        <li><a href="{{URL::to('/checkout')}}"><i class="fa fa-crosshairs"></i>
+                                        <li><a href="{{URL::to('/checkout')}}">
                                                 Payment</a></li>
 
                                         <?php
                                  }elseif($customer_id!=NULL && $shipping_id!=NULL){
                                  ?>
-                                        <li><a href="{{URL::to('/payment')}}"><i class="fa fa-crosshairs"></i>
+                                        <li><a href="{{URL::to('/payment')}}">
                                                 Payment</a></li>
                                         <?php 
                                 }else{
                                 ?>
-                                        <li><a href="{{URL::to('/login')}}"><i class="fa fa-crosshairs"></i> Payment</a>
+                                        <li><a href="{{URL::to('/login')}}"> Payment</a>
                                         </li>
                                         <?php
                                  }
@@ -200,14 +202,14 @@
                                         ?>
                                     </ul>
                                 </li>
-                                <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
+                                <!-- <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="blog.html">Blog List</a></li>
                                         <li><a href="blog-single.html">Blog Single</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="404.html">404</a></li>
-                                <li><a href="contact-us.html">Contact</a></li>
+                                <li><a href="contact-us.html">Contact</a></li> -->
                             </ul>
                         </div>
                     </div>
@@ -331,22 +333,6 @@
                         </div>
                         <!--/brands_products-->
 
-                        <div class="price-range">
-                            <!--price-range-->
-                            <!-- <h2>Price Range</h2>
-                            <div class="well text-center">
-                                <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600"
-                                    data-slider-step="5" data-slider-value="[250,450]" id="sl2"><br />
-                                <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
-                            </div> -->
-                        </div>
-                        <!--/price-range-->
-
-                        <div class="shipping text-center">
-                            <!--shipping-->
-                            <img src="images/home/shipping.jpg" alt="" />
-                        </div>
-                        <!--/shipping-->
 
                     </div>
                 </div>
@@ -366,17 +352,19 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <form>
+                                            <form action="{{URL::to('/product-details/'.$all_pro->product_id)}}">
+                                                {{csrf_field()}}
                                                 <a href="{{URL::to('/product-details/'.$all_pro->product_id)}}">
                                                     <img src="{{url('backend/uploads/product', $all_pro->product_image)}}"
                                                         alt="" width="50" height="100" />
-                                                    <h2>{{number_format($all_pro->product_price)}}<span
-                                                            style="font-size:16px">đ</span>
-                                                    </h2>
+                                                    <h4 style="color:orange">
+                                                        {{number_format($all_pro->product_price)}}<span
+                                                            style="font-size:16px; color:orange">đ</span>
+                                                    </h4>
                                                     <p>{{$all_pro->product_name}}</p>
                                                 </a>
-                                                <button type="button" class="btn btn-default add-to-cart"><i
-                                                        class="fa fa-shopping-cart"></i>Add to cart</button>
+                                                <button type="submit" class="btn btn-default check-out"><i
+                                                        class="fas fa-info"></i>View Details</button>
                                             </form>
                                         </div>
                                     </div>
@@ -398,7 +386,7 @@
     <footer id="footer">
         <!--Footer-->
         <div class="footer-top">
-            <div class="container">
+            <!-- <div class="container">
                 <div class="row">
                     <div class="col-sm-2">
                         <div class="companyinfo">
@@ -474,7 +462,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <div class="footer-widget">
@@ -569,6 +557,8 @@
     <script src="{{asset('frontend/js/main.js')}}"></script>
     <script>
     $(document).ready(function() {
+        let count = 0;
+        let temp_id = [];
         $('.add-to-cart').click(function() {
             var id = $(this).data('id_product');
             var cart_product_id = $('.cart_product_id_' + id).val();
@@ -578,38 +568,46 @@
             var cart_product_qty = $('.cart_product_qty_' + id).val();
             var _token = $('input[name="_token"]').val();
 
-            $.ajax({
-                url: "{{URL('/add-cart-ajax')}}",
-                method: "post",
+            const found = temp_id.findIndex(element => element == id);
+            console.log(found);
+            if (found !== -1) {
+                swal("This product is already in your cart");
+                console.log(temp_id);
 
-                data: {
-                    cart_product_id: cart_product_id,
-                    cart_product_name: cart_product_name,
-                    cart_product_image: cart_product_image,
-                    cart_product_price: cart_product_price,
-                    cart_product_qty: cart_product_qty,
-                    _token: _token,
-                },
-                success: function(data) {
-                    swal({
-                        title: "Added product successfully",
-                        text: "Do you go the cart?",
-                        icon: "success",
-                        buttons: true,
-                        dangerMode: true,
-                    }).then((willDelete) => {
-                        if (willDelete) {
-                            window.location.href = '/show-cart';
-                        } else {
-                            return;
-                        }
-                    });;
+            } else {
+                $.ajax({
+                    url: "{{URL('/add-cart-ajax')}}",
+                    method: "post",
 
-                }
+                    data: {
+                        cart_product_id: cart_product_id,
+                        cart_product_name: cart_product_name,
+                        cart_product_image: cart_product_image,
+                        cart_product_price: cart_product_price,
+                        cart_product_qty: cart_product_qty,
+                        _token: _token,
+                    },
+                    success: function(data) {
+                        swal({
+                            title: "Added product successfully",
+                            text: "Do you go the cart?",
+                            icon: "success",
+                            buttons: true,
+                            dangerMode: true,
+                        }).then((willDelete) => {
+                            if (willDelete) {
+                                window.location.href = '/show-cart';
+                            } else {
+                                return;
+                            }
+                        });;
 
+                    }
+                });
+                temp_id.push(id);
+                console.log(temp_id);
 
-            });
-
+            }
 
         });
     });

@@ -20,6 +20,8 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\HistoryController;
+
 
 use Illuminate\Support\Facades\Route;
 
@@ -110,3 +112,6 @@ Route::get('/checkout',[CheckoutController::class,'checkout']);
 Route::get('/payment',[CheckoutController::class,'payment']);
 Route::post('/order-place',[CheckoutController::class,'order_place']);
 Route::post('/save-shipping-information',[CheckoutController::class,'save_shipping_information']);
+
+//History
+Route::get('/history',[HistoryController::class,'show_history']);

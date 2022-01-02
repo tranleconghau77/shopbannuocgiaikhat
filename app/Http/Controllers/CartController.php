@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
 use Session;
+use App\Models\Brand;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\Customers;
 
 
 session_start();
@@ -13,9 +17,9 @@ session_start();
 class CartController extends Controller
 {
     public function save_cart(Request $request){
-        $all_brand=DB::table('tbl_brand')->where('brand_status','1')->get();
-        $all_category=DB::table('tbl_category_product')->where('category_status','1')->get();
-        $all_product=DB::table('tbl_product')->where('product_status','1')->get();
+        $all_brand=Brand::where('brand_status','1')->get();
+        $all_product=Product::where('product_status','1')->get();
+        $all_category=Category::where('category_status','1')->get();
         
         $data = $request->all();
         
@@ -67,18 +71,15 @@ class CartController extends Controller
     public function show_cart(){
         
         
-        $all_brand=DB::table('tbl_brand')->where('brand_status','1')->get();
-        $all_category=DB::table('tbl_category_product')->where('category_status','1')->get();
-        $all_product=DB::table('tbl_product')->where('product_status','1')->get();
+        $all_brand=Brand::where('brand_status','1')->get();
+        $all_product=Product::where('product_status','1')->get();
+        $all_category=Category::where('category_status','1')->get();
         return view('pages.cart.show_cart')->with('all_category',$all_category)->with('all_brand',$all_brand)->with('all_product',$all_product);
     }
 
     public function add_cart_ajax(Request $request){
         
         $data = $request->all();
-        echo "<pre>";
-        print_r($data);
-        echo "</pre>";
 
         
         $session_id = substr(md5(microtime()),rand(0,26),5);
@@ -140,15 +141,9 @@ class CartController extends Controller
 
     public function update_cart(Request $request){
         $data=$request->all();
-        echo "<pre>";
-        print_r($data);
-        echo "</pre>";
-        
+
         $cart=Session::get('cart');
 
-        echo "<pre>";
-        print_r($cart);
-        echo "</pre>";
         if($cart){
             foreach($data['cart_qty']as $key=>$qty){
                 foreach($cart as $session=>$val){

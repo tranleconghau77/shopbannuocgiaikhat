@@ -40,7 +40,7 @@ class AdminController extends Controller
         $admin_email = $request->input('admin_email');
         $admin_password = $request->input('admin_password');
 
-        $result = Admin::all()->where('admin_email', $admin_email)->where('admin_password', $admin_password)->first();
+        $result = Admin::where('admin_email', $admin_email)->where('admin_password', $admin_password)->first();
         if ($result != null) {
             Session::put('admin_name', $result->admin_name);
             Session::put('admin_id', $result->admin_id);
