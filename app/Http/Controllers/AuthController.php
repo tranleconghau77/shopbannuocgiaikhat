@@ -98,7 +98,7 @@ class AuthController extends Controller
             }
             return redirect('/home');
         }
-        Session::put('message','User name already exists');
+        Session::put('message','Email already exists');
         return redirect('/register');
     }
     

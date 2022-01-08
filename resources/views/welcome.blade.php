@@ -37,7 +37,7 @@
 <body>
     <header id="header">
         <!--header-->
-        <div class="header_top">
+        <div class="header_top" style="background:#22b4b7">
             <!--header_top-->
             <div class="container">
                 <div class="row">
@@ -105,7 +105,7 @@
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
-                                <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
+                                <!-- <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li> -->
                                 <?php 
                                         $customer_id=Session::get('customer_id');
                                             if($customer_id!=NULL){
@@ -217,8 +217,9 @@
                         <form action="{{URL::to('/search-product')}}" method="post">
                             <div class="search_box pull-right">
                                 {{csrf_field()}}
-                                <input type="text" name="keywords" placeholder="Search" />
-                                <input type="submit" class="btn btn-primary btn-sm" value="Search" style="margin-top:0">
+                                <input type="text" name="keywords" class="search-keywords" placeholder="Search" />
+                                <input type="submit" class="btn btn-primary btn-sm button-search-keywords"
+                                    value="Search" style="margin-top:0">
                             </div>
                         </form>
                     </div>
@@ -356,7 +357,7 @@
                                                 {{csrf_field()}}
                                                 <a href="{{URL::to('/product-details/'.$all_pro->product_id)}}">
                                                     <img src="{{url('backend/uploads/product', $all_pro->product_image)}}"
-                                                        alt="" width="50" height="100" />
+                                                        alt="" width="50" height="auto" />
                                                     <h4 style="color:orange">
                                                         {{number_format($all_pro->product_price)}}<span
                                                             style="font-size:16px; color:orange">đ</span>
@@ -554,6 +555,7 @@
     <script src="{{asset('frontend/js/owl.carousel.min.js')}}"></script>
     <script src="{{asset('frontend/js/recommand_product_slider.js')}}"></script>
     <script src="{{asset('frontend/js/option_payment.js')}}"></script>
+    <script src="{{asset('frontend/js/advertising.js')}}"></script>
     <script src="{{asset('frontend/js/main.js')}}"></script>
     <script>
     $(document).ready(function() {
@@ -609,6 +611,22 @@
 
             }
 
+        });
+    });
+
+    $('.button-search-keywords').click(function(e) {
+        var keywords = $('.search-keywords').val();
+        var _token = $('input[name="_token"]').val();
+        $.ajax({
+            url: "{{URL('/post-search-manager')}}",
+            method: "post",
+            data: {
+                keywords: keywords,
+                _token: _token,
+            },
+            success: function(data) {
+                window.location.href = '/search-product';
+            }
         });
     });
     </script>

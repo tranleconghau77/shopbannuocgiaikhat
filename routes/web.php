@@ -21,6 +21,8 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\SearchController;
+
 
 
 use Illuminate\Support\Facades\Route;
@@ -31,6 +33,10 @@ Route::get('/admin', [AdminController::class, 'index']);
 Route::get('/dashboard', [AdminController::class, 'show_dashboard']);
 Route::get('/logout-admin', [AdminController::class, 'log_out']);
 Route::post('/admin-dashboard', [AdminController::class, 'dashboard']);
+Route::get('/register-admin', [AdminController::class, 'register_admin']);
+Route::post('/save-register-admin', [AdminController::class, 'save_register_admin']);
+
+
 
 //Category Product
 Route::get('/add-category-product', [CategoryProduct::class, 'add_category_product']);
@@ -74,6 +80,12 @@ Route::get('/manage-order', [OrderController::class, 'manage_order']);
 Route::get('/view-order/{order_id}', [OrderController::class, 'view_order']);
 Route::get('/delete-order/{order_id}', [OrderController::class, 'delete_order']);
 
+//Search
+Route::post('/post-search-manager', [SearchController::class, 'post_search_manager']);
+Route::get('/result-search-product-manager', [SearchController::class, 'result_search_product_manager']);
+Route::get('/result-search-brand-manager', [SearchController::class, 'result_search_brand_manager']);
+Route::get('/result-search-category-manager', [SearchController::class, 'result_search_category_manager']);
+
 
 //End BE UI
 
@@ -90,7 +102,9 @@ Route::get('/brand-product-home/{brand_id}', [BrandProduct::class, 'show_brand_h
 //Details product
 Route::get('/product-details/{product_id}', [ProductController::class, 'product_details']);
 //Search product
-Route::post('/search-product', [ProductController::class, 'search_product']);
+Route::get('/search-product', [SearchController::class, 'search_product']);
+
+
 
 
 //Cart
