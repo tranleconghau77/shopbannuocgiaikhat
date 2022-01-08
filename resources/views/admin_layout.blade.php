@@ -58,7 +58,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <header class="header fixed-top clearfix">
             <!--logo start-->
             <div class="brand">
-                <a href="index.html" class="logo">
+                <a href="/dashboard" class="logo">
                     ADMIN
                 </a>
                 <div class="sidebar-toggle-box">
@@ -78,7 +78,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <!-- user login dropdown start-->
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <img alt="" src="{{asset('backend/images/1.png')}}">
+                            <img alt="" src="{{asset('backend/images/user.png')}}">
                             <span class="username">
                                 <?php
                                     $name=Session::get('admin_name');
@@ -178,6 +178,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </section>
         <!--main content end-->
     </section>
+
     <script src="{{asset('backend/js/bootstrap.js')}}"></script>
     <script src="{{asset('backend/js/jquery.dcjqaccordion.2.7.js')}}"></script>
     <script src="{{asset('backend/js/scripts.js')}}"></script>
@@ -186,9 +187,37 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
     <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
     <script src="{{asset('backend/js/jquery.scrollTo.js')}}"></script>
-    <!-- morris JavaScript -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+    $('.search-button-manager').click(function() {
+        var id = $(this).data('id_search');
+        var keywords = $('.search-keywords').val();
+        var _token = $('input[name="_token"]').val();
 
+        $.ajax({
+            url: "{{URL('/post-search-manager')}}",
+            method: "post",
+            data: {
+                keywords: keywords,
+                _token: _token,
+            },
+            success: function(data) {
+                console.log(id);
+                if (id === 1) {
+                    window.location.href = '/result-search-category-manager';
+                }
+                if (id === 2) {
+                    window.location.href = '/result-search-brand-manager';
 
+                }
+                if (id === 3) {
+                    window.location.href = '/result-search-product-manager';
+                }
+            }
+        });
+        return false;
+    });
+    </script>
 </body>
 
 </html>

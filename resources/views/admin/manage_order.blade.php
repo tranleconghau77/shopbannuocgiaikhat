@@ -41,7 +41,7 @@
                         <th>Name Customer</th>
                         <th>Total Money</th>
                         <th>Status</th>
-                        <th>View/Delete</th>
+                        <th>Options</th>
                         <th>Created at</th>
                     </tr>
                 </thead>

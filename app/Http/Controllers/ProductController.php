@@ -151,6 +151,8 @@ class ProductController extends Controller
         Session::put('message', 'Delete product successfully.');
         return redirect('/all-product');
     }
+
+    
     //End BE UI Admin
 
     //Start FE UI pages
@@ -163,15 +165,6 @@ class ProductController extends Controller
         return view('pages.product.product_details')->with('all_brand',$all_brand)->with('all_category',$all_category)->with('all_product',$all_product)->with('product',$product);
     }
 
-    public function search_product(Request $request){
-        $data=$request->keywords;
-
-        $all_brand=Brand::where('brand_status','1')->get();
-        $all_product=Product::where('product_status','1')->get();
-        $all_category=Category::where('category_status','1')->get();
-
-        $result_search=Product::where('product_status','1')->where('product_name','like','%'.$data.'%')->get();
     
-        return view('pages.product.search_product')->with('all_product',$all_product)->with('all_brand',$all_brand)->with('all_category',$all_category)->with('result_search',$result_search);
-    }
+
 }

@@ -41,6 +41,9 @@ class CategoryProduct extends Controller
 
     public function edit_category_product($category_id)
     {
+        if(!$category_id){
+            return redirect()->back()->withInput();
+        }
         $this->AuthLogin();
 
         $edit_value=Category::find($category_id);
@@ -49,7 +52,9 @@ class CategoryProduct extends Controller
     public function update_category_product(Request $request,$category_id)
     {
         $this->AuthLogin();
-
+        if(!$request){
+            return redirect()->back()->withInput();
+        }
         $data = Category::find($category_id);
         $data['category_name'] = $request->category_product_name;
         $data['category_desc'] = $request->category_product_desc;
@@ -103,6 +108,8 @@ class CategoryProduct extends Controller
         return redirect('/all-category-product');
 
     }
+
+    
 
     //End BE UI Admin page
 

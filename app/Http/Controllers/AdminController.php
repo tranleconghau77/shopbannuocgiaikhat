@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use DB;
 use App\Models\Admin;
+
 use Illuminate\Http\Request;
 use Session;
 
@@ -38,7 +38,7 @@ class AdminController extends Controller
     {
         
         $admin_email = $request->input('admin_email');
-        $admin_password = $request->input('admin_password');
+        $admin_password = md5($request->input('admin_password'));
 
         $result = Admin::where('admin_email', $admin_email)->where('admin_password', $admin_password)->first();
         if ($result != null) {
@@ -58,6 +58,28 @@ class AdminController extends Controller
         Session::put('admin_id', null);
         return redirect('/admin');
 
+    }
+
+    public function register_admin(){
+        return view('admin_register');
+    }
+
+    public function save_register_admin(Request $request){
+        $check_email=Admin::where('admin_email',$request->admin_email)->count();
+        
+        if($check_email==null){
+            $data= array();
+            $data['admin_email']=$request->admin_email;
+            $data['admin_name']=$request->admin_name;
+            $data['admin_phone']=$request->admin_phone;
+            $data['admin_password']=md5($request->admin_password);
+    
+            Admin::insert($data);
+            
+            return redirect('/admin');
+        }
+        Session::put('message','Email already exists');
+        return redirect('/register-admin');
     }
 
 }

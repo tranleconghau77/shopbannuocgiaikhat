@@ -21,8 +21,8 @@
                             value="{{$all_pro->product_price}}" name="">
                         <input type="hidden" class="cart_product_qty_{{$all_pro->product_id}}" value="1" name="">
                         <a href="{{URL::to('/product-details/'.$all_pro->product_id)}}">
-                            <img src="{{url('backend/uploads/product', $all_pro->product_image)}}" alt="" width="100"
-                                height="180" />
+                            <img src="{{url('backend/uploads/product', $all_pro->product_image)}}" alt="" width="50"
+                                height="auto" />
                             <h2>{{number_format($all_pro->product_price)}}<span style="font-size:16px">đ</span></h2>
                             <p>{{$all_pro->product_name}}</p>
                         </a>
@@ -35,8 +35,8 @@
             </div>
             <div class="choose">
                 <ul class="nav nav-pills nav-justified">
-                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+                    <!-- <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li> -->
                 </ul>
             </div>
         </div>

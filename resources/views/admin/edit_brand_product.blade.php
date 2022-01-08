@@ -24,11 +24,15 @@
                             <textarea type="text" style="resize:none" rows="3" name="brand_desc" class="form-control"
                                 id="exampleInputPassword1">{{$edit_value->brand_desc}}</textarea>
                         </div>
+
                         <button type="submit" name="update_brand_product" class="btn btn-info">Update
                             Brand</button>
                     </form>
+
+
                 </div>
             </div>
+
         </section>
 
     </div>
@@ -38,4 +42,5 @@
 
     <!-- page end-->
 </div>
+
 @endsection

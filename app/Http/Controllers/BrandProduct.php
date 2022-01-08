@@ -89,7 +89,9 @@ class BrandProduct extends Controller
     public function update_brand_product(Request $request,$brand_id)
     {
         $this->AuthLogin();
-
+        if(!$request){
+            return redirect()->back()->withInput();
+        }
         $data = Brand::find($brand_id);
         $data['brand_name'] = $request->brand_name;
         $data['brand_desc'] = $request->brand_desc;
@@ -116,4 +118,6 @@ class BrandProduct extends Controller
       
        return view('pages.brand.show_brand')->with('all_category',$all_category)->with('all_brand',$all_brand)->with('product_by_brand_id',$product_by_brand_id)->with('all_product',$all_product); 
     }
+
+    
 }
