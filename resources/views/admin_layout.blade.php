@@ -169,11 +169,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 @yield('admin_content')
             </section>
             <!-- footer -->
-            <div class="footer">
+            <!-- <div class="footer">
                 <div class="wthree-copyright">
                     <p>© 2022 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
                 </div>
-            </div>
+            </div> -->
             <!-- / footer -->
         </section>
         <!--main content end-->
@@ -212,6 +212,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 }
                 if (id === 3) {
                     window.location.href = '/result-search-product-manager';
+                }
+                if (id === 4) {
+                    window.location.href = '/result-search-order-manager';
                 }
             }
         });

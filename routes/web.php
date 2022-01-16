@@ -85,6 +85,8 @@ Route::post('/post-search-manager', [SearchController::class, 'post_search_manag
 Route::get('/result-search-product-manager', [SearchController::class, 'result_search_product_manager']);
 Route::get('/result-search-brand-manager', [SearchController::class, 'result_search_brand_manager']);
 Route::get('/result-search-category-manager', [SearchController::class, 'result_search_category_manager']);
+Route::get('/result-search-order-manager', [SearchController::class, 'result_search_order_manager']);
+
 
 
 //End BE UI

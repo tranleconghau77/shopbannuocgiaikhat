@@ -114,7 +114,7 @@ class ProductController extends Controller
     {
         $this->AuthLogin();
 
-        $data =array();
+        $data = Product::find($product_id);
         $data['product_name'] = $request->product_name;
         $data['product_desc'] = $request->product_desc;
         $data['product_content'] = $request->product_content;
@@ -138,7 +138,7 @@ class ProductController extends Controller
             
         }
 
-        DB::table('tbl_product')->where('product_id',$product_id)->update($data);
+        $data->save();
         Session::put('message', 'Update  product successfully.');
         return redirect('/all-product');
     }

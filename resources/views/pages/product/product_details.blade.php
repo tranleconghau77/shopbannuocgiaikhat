@@ -1,17 +1,19 @@
 @extends('welcome')
 @section('content')
+
 @foreach($product as $pro)
+
 <div class="product-details">
     <!--product-details-->
     <div class="col-sm-5">
         <div class="view-product">
             <img src="{{url('backend/uploads/product', $pro->product_image)}}" alt="" width="100" height="180" />
-            <h3>ZOOM</h3>
+            <!-- <h3>ZOOM</h3> -->
         </div>
         <div id="similar-product" class="carousel slide" data-ride="carousel">
 
             <!-- Wrapper for slides -->
-            <div class="carousel-inner">
+            <!-- <div class="carousel-inner">
                 <div class="item active">
                     <a href=""><img src="{{url('backend/uploads/product', $pro->product_image)}}" width="80"
                             height="auto" alt=""></a>
@@ -37,15 +39,15 @@
                             height="auto"></a>
                 </div>
 
-            </div>
+            </div> -->
 
             <!-- Controls -->
-            <a class="left item-control" href="#similar-product" data-slide="prev">
+            <!-- <a class="left item-control" href="#similar-product" data-slide="prev">
                 <i class="fa fa-angle-left"></i>
             </a>
             <a class="right item-control" href="#similar-product" data-slide="next">
                 <i class="fa fa-angle-right"></i>
-            </a>
+            </a> -->
         </div>
 
     </div>

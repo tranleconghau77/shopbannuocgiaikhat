@@ -10,23 +10,21 @@
         </div>
         <div class="row w3-res-tb">
             <div class="col-sm-5 m-b-xs">
-                <select class="input-sm form-control w-sm inline v-middle">
-                    <option value="0">Bulk action</option>
-                    <option value="1">Delete selected</option>
-                    <option value="2">Bulk edit</option>
-                    <option value="3">Export</option>
-                </select>
-                <button class="btn btn-sm btn-default">Apply</button>
+                <h3 style="margin-left:40px">E-DRINK</h3>
             </div>
             <div class="col-sm-4">
             </div>
             <div class="col-sm-3">
-                <div class="input-group">
-                    <input type="text" class="input-sm form-control" placeholder="Search">
-                    <span class="input-group-btn">
-                        <button class="btn btn-sm btn-default" type="button">Go!</button>
-                    </span>
-                </div>
+                <form>
+                    {{csrf_field()}}
+                    <div class="input-group">
+                        <input name="keywords" type="text" class="input-sm form-control search-keywords" placeholder="">
+                        <span class="input-group-btn">
+                            <button class="search-button-manager btn btn-sm btn-default" data-id_search=4
+                                type="submit">Search</button>
+                        </span>
+                    </div>
+                </form>
             </div>
         </div>
         <div class="table-responsive">

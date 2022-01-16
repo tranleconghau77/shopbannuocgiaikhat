@@ -61,12 +61,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 {{csrf_field()}}
                 <input type="text" class="ggg" name="admin_email" placeholder="User name" required="">
                 <input type="password" class="ggg" name="admin_password" placeholder="Password" required="">
-                <span><input type="checkbox" />Remember Me</span>
-                <h6><a href="#">Forgot Password?</a></h6>
+                <!-- <span><input type="checkbox" />Remember Me</span>
+                <h6><a href="#">Forgot Password?</a></h6> -->
                 <div class="clearfix"></div>
                 <input type="submit" value="Sign In" name="login">
             </form>
-            <p>Don't Have an Account ?<a href="{{URL::to('/register-admin')}}">Create an account</a></p>
+            <!-- <p>Don't Have an Account ?<a href="{{URL::to('/register-admin')}}">Create an account</a></p> -->
         </div>
     </div>
 

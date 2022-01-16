@@ -71,12 +71,16 @@ class CheckoutController extends Controller
     }
 
     public function order_place(Request $request){
+        
         $all_brand=Brand::where('brand_status','1')->get();
         $all_product=Product::where('product_status','1')->get();
         $all_category=Category::where('category_status','1')->get();
         
         //insert data into payment table
         $data= array();
+        if($request->payment_option==null ){
+            return redirect('/home');
+        }
         $data['payment_method']=$request->payment_option;
         $data['payment_status']="Waiting";
         $payment_id=Payment::insertGetId($data);

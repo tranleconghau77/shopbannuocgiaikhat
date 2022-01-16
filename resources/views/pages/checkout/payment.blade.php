@@ -31,10 +31,14 @@
                     <?php 
                     $productId=Session::get('productId');
                     $product_quantity=Session::get('product_quantity');
-                    
+                    $cart=Session::get('cart');
+                    // if($cart==null);
+                    // {
+                    //     $cart=[];
+                    // }
                     $total_money=0;
                     ?>
-                    @foreach( Session::get('cart') as $key =>$val)
+                    @foreach( $cart as $key =>$val)
                     <?php
                         $subtotal= $val['product_price'] *$val['product_qty'];
                         if($val['product_id']==$productId){
