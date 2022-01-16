@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAGA,AACI,YADQ,AAAA,MAAM,CACd,IAAI,CAAA;EACA,UAAU,EAAE,QAAQ;EACxB,SAAS,EAAE,UAAU;CACpB",
+    "sources": [
+        "card_animation.scss"
+    ],
+    "names": [],
+    "file": "card_animation.css"
+}

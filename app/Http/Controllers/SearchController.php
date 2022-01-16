@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Order;
+
 use App\Models\Customers;
 use Illuminate\Http\Request;
 use Session;
@@ -57,6 +59,17 @@ class SearchController extends Controller
             return view('admin.all_category_product')->with('all_category_product', $all_category_product);
         
     }
+
+    public function result_search_order_manager()
+    {   
+        $data =Session::get('keywords');
+            $this->AuthLogin();
+            $all_order=Order::join('tbl_customers','tbl_customers.customer_id','=','tbl_order.customer_id')->where('customer_name','like','%'.$data.'%')->get();
+            $all_product = Product::join('tbl_category_product','tbl_product.category_id','=','tbl_category_product.category_id')
+        ->join('tbl_brand','tbl_product.brand_id','=','tbl_brand.brand_id')->where('product_name','like','%'.$data.'%')->get();
+            return view('admin.manage_order')->with('all_order', $all_order);
+        
+    }
     //End BE
 
     //Search FE
@@ -70,7 +83,7 @@ class SearchController extends Controller
         $all_category=Category::where('category_status','1')->get();
 
         $result_search=Product::where('product_status','1')->where('product_name','like','%'.$data.'%')->get();
-    
+        
         return view('pages.product.search_product')->with('all_product',$all_product)->with('all_brand',$all_brand)->with('all_category',$all_category)->with('result_search',$result_search);
     }
 }

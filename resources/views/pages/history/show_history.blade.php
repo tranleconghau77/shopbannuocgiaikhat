@@ -19,6 +19,9 @@
                     }
                     $total_money=0;
                     $product_by_order_id=Session::get('product_by_order_id');
+                    if($product_by_order_id==null){
+                        $product_by_order_id=[];
+                    }
                     $customer_id=Session::get('customer_id');
                     // echo "<pre>";
                     // print_r ($product_by_order_id);

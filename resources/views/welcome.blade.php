@@ -10,6 +10,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="{{asset('frontend/css/bootstrap.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('frontend/css/word_animation.css')}}" rel="stylesheet" />
+    <link href="{{asset('frontend/css/card_animation.css')}}" rel="stylesheet" />
     <link href="{{asset('frontend/css/fontawesome.min.css')}}" rel="stylesheet" />
     <link href="{{asset('frontend/css/prettyPhoto.css')}}" rel="stylesheet" />
     <link href="{{asset('frontend/css/price-range.css')}}" rel="stylesheet" />
@@ -22,15 +24,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
-    <!-- <link rel="shortcut icon" href="images/ico/favicon.ico">
-	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
-	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
-	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-	<link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png"> -->
+
 </head>
 <!--/head-->
 
@@ -80,24 +74,24 @@
                             <div class="btn-group">
                                 <button type="button" class="btn btn-default dropdown-toggle usa"
                                     data-toggle="dropdown">
-                                    USA
+                                    HO CHI MINH
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Canada</a></li>
-                                    <li><a href="#">UK</a></li>
+                                    <li><a href="#">DONG HA</a></li>
+                                    <li><a href="#">HA NOI</a></li>
                                 </ul>
                             </div>
 
                             <div class="btn-group">
                                 <button type="button" class="btn btn-default dropdown-toggle usa"
                                     data-toggle="dropdown">
-                                    DOLLAR
+                                    VND
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Canadian Dollar</a></li>
-                                    <li><a href="#">Pound</a></li>
+                                    <li><a href="#">EURO</a></li>
+                                    <li><a href="#">DOLLAR</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -245,10 +239,12 @@
                         <div class="carousel-inner">
                             <div class="item active">
                                 <div class="col-sm-6">
-                                    <h1><span>E</span>-DRINK</h1>
+                                    <h1 class="slider-title">E-DRINK</h1>
                                     <h2>Time makes heros</h2>
                                     <p>The best website for BEER, WHISKY, WATER, BEVERAGE. </p>
-                                    <button type="button" class="btn btn-default get">Get it now</button>
+                                    <a href="#"><button type="button" class="btn btn-default get">Get
+                                            it
+                                            now</button></a>
                                 </div>
                                 <div class="col-sm-6" style="height:200px !important;">
                                     <img src="{{asset('frontend/resource/images/home/sting-slider.jpg')}}"
@@ -258,10 +254,12 @@
                             </div>
                             <div class="item">
                                 <div class="col-sm-6">
-                                    <h1><span>E</span>-DRINK</h1>
+                                    <h1 class="slider-title">E-DRINK</h1>
                                     <h2>Time makes heros</h2>
                                     <p>The best website for BEER, WHISKY, WATER, BEVERAGE. </p>
-                                    <button type="button" class="btn btn-default get">Get it now</button>
+                                    <a href="#"><button type="button" class="btn btn-default get">Get
+                                            it
+                                            now</button></a>
                                 </div>
                                 <div class="col-sm-6" style="height:200px !important;">
                                     <img src="{{asset('frontend/resource/images/home/bia333-slider.jpg')}}"
@@ -271,10 +269,12 @@
 
                             <div class="item">
                                 <div class="col-sm-6">
-                                    <h1><span>E</span>-DRINK</h1>
+                                    <h1 class="slider-title">E-DRINK</h1>
                                     <h2>Time makes heros</h2>
                                     <p>The best website for BEER, WHISKY, WATER, BEVERAGE. </p>
-                                    <button type="button" class="btn btn-default get">Get it now</button>
+                                    <a href="#"><button type="button" class="btn btn-default get">Get
+                                            it
+                                            now</button></a>
                                 </div>
                                 <div class="col-sm-6" style="height:200px !important;">
                                     <img src="{{asset('frontend/resource/images/home/aquafina-slider.jpeg')}}"
@@ -303,7 +303,11 @@
             <div class="row">
                 <div class="col-sm-3">
                     <div class="left-sidebar">
-                        <h2>Category</h2>
+                        <?php
+                            $current_page=Session::get('current_page');
+                            if($current_page!="login"){
+                        ?>
+                        <h2>Categories</h2>
                         <div class="panel-group category-products" id="accordian">
                             <!--category-productsr-->
                             @foreach($all_category as $key=>$all_cate)
@@ -319,7 +323,7 @@
                         </div>
                         <!--/category-products-->
 
-                        <div class=" brands_products">
+                        <div class="brands_products">
                             <!--brands_products-->
                             <h2>Brands</h2>
                             <div class="brands-name">
@@ -335,9 +339,11 @@
                         <!--/brands_products-->
 
 
+                        <?php
+                    }
+                ?>
                     </div>
                 </div>
-
                 <div class="col-sm-9">
                     @yield('content')
 
@@ -355,22 +361,22 @@
                                         <div class="productinfo text-center">
                                             <form action="{{URL::to('/product-details/'.$all_pro->product_id)}}">
                                                 {{csrf_field()}}
-                                                <a href="{{URL::to('/product-details/'.$all_pro->product_id)}}">
-                                                    <img src="{{url('backend/uploads/product', $all_pro->product_image)}}"
-                                                        alt="" width="50" height="auto" />
-                                                    <h4 style="color:orange">
-                                                        {{number_format($all_pro->product_price)}}<span
-                                                            style="font-size:16px; color:orange">đ</span>
-                                                    </h4>
-                                                    <p>{{$all_pro->product_name}}</p>
+                                                <div class="img">
+                                                    <a href="{{URL::to('/product-details/'.$all_pro->product_id)}}">
+                                                        <img src="{{url('backend/uploads/product', $all_pro->product_image)}}"
+                                                            alt="" width="50" height="auto" />
+                                                </div>
+                                                <h4 style="color:orange">
+                                                    {{number_format($all_pro->product_price)}}<span
+                                                        style="font-size:16px; color:orange">đ</span>
+                                                </h4>
+                                                <p>{{$all_pro->product_name}}</p>
                                                 </a>
                                                 <button type="submit" class="btn btn-default check-out"><i
                                                         class="fas fa-info"></i>View Details</button>
                                             </form>
                                         </div>
                                     </div>
-
-
                                 </div>
                             </div>
 
@@ -383,6 +389,8 @@
             </div>
         </div>
     </section>
+
+
 
     <footer id="footer">
         <!--Footer-->
@@ -466,7 +474,7 @@
             </div> -->
         </div>
 
-        <div class="footer-widget">
+        <div class="footer-widget" style="margin:20px">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-2">
@@ -528,20 +536,11 @@
                             </form>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
 
-        <div class="footer-bottom">
-            <div class="container">
-                <div class="row">
-                    <p class="pull-left">Copyright © 2013 E-SHOPPER Inc. All rights reserved.</p>
-                    <p class="pull-right">Designed by <span><a target="_blank"
-                                href="http://www.themeum.com">Themeum</a></span></p>
-                </div>
-            </div>
-        </div>
+
 
     </footer>
     <!--/Footer-->

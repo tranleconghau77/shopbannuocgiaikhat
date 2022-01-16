@@ -18,6 +18,7 @@ class AuthController extends Controller
 {
     //LOGIN page FE
     public function login(){
+        Session::put('current_page','login');
         $all_brand=Brand::where('brand_status','1')->get();
         $all_category=Category::where('category_status','1')->get();
         $all_product=Product::where('product_status','1')->get();
@@ -25,6 +26,8 @@ class AuthController extends Controller
     }
 
     public function save_login(Request $request){
+        Session::put('current_page',null);
+
         $data=$request->all();
   
         $email_account=$request->email_account;
