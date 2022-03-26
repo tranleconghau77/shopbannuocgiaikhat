@@ -10,15 +10,15 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="{{secure_asset('frontend/css/bootstrap.min.css')}}" rel="stylesheet" />
-    <link href="{{asset('frontend/css/word_animation.css')}}" rel="stylesheet" />
-    <link href="{{asset('frontend/css/card_animation.css')}}" rel="stylesheet" />
+    <link href="{{secure_asset('frontend/css/word_animation.css')}}" rel="stylesheet" />
+    <link href="{{secure_asset('frontend/css/card_animation.css')}}" rel="stylesheet" />
     <link href="{{secure_asset('frontend/css/fontawesome.min.css')}}" rel="stylesheet" />
-    <link href="{{asset('frontend/css/prettyPhoto.css')}}" rel="stylesheet" />
-    <link href="{{asset('frontend/css/price-range.css')}}" rel="stylesheet" />
-    <link href="{{asset('frontend/css/animate.css')}}" rel="stylesheet" />
-    <link href="{{asset('frontend/css/main.css')}}" rel="stylesheet" />
-    <link href="{{asset('frontend/css/owl.carousel.min.css')}}" rel="stylesheet" />
-    <link href="{{asset('frontend/css/responsive.css')}}" rel="stylesheet" />
+    <link href="{{secure_asset('frontend/css/prettyPhoto.css')}}" rel="stylesheet" />
+    <link href="{{secure_asset('frontend/css/price-range.css')}}" rel="stylesheet" />
+    <link href="{{secure_asset('frontend/css/animate.css')}}" rel="stylesheet" />
+    <link href="{{secure_asset('frontend/css/main.css')}}" rel="stylesheet" />
+    <link href="{{secure_asset('frontend/css/owl.carousel.min.css')}}" rel="stylesheet" />
+    <link href="{{secure_asset('frontend/css/responsive.css')}}" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.slim.js"
         integrity="sha512-HNbo1d4BaJjXh+/e6q4enTyezg5wiXvY3p/9Vzb20NIvkJghZxhzaXeffbdJuuZSxFhJP87ORPadwmU9aN3wSA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -547,15 +547,15 @@
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="{{asset('frontend/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('frontend/js/jquery.scrollUp.min.js')}}"></script>
-    <script src="{{asset('frontend/js/price-range.js')}}"></script>
-    <script src="{{asset('frontend/js/jquery.prettyPhoto.js')}}"></script>
-    <script src="{{asset('frontend/js/owl.carousel.min.js')}}"></script>
-    <script src="{{asset('frontend/js/recommand_product_slider.js')}}"></script>
-    <script src="{{asset('frontend/js/option_payment.js')}}"></script>
-    <script src="{{asset('frontend/js/advertising.js')}}"></script>
-    <script src="{{asset('frontend/js/main.js')}}"></script>
+    <script src="{{secure_asset('frontend/js/bootstrap.min.js')}}"></script>
+    <script src="{{secure_asset('frontend/js/jquery.scrollUp.min.js')}}"></script>
+    <script src="{{secure_asset('frontend/js/price-range.js')}}"></script>
+    <script src="{{secure_asset('frontend/js/jquery.prettyPhoto.js')}}"></script>
+    <script src="{{secure_asset('frontend/js/owl.carousel.min.js')}}"></script>
+    <script src="{{secure_asset('frontend/js/recommand_product_slider.js')}}"></script>
+    <script src="{{secure_asset('frontend/js/option_payment.js')}}"></script>
+    <script src="{{secure_asset('frontend/js/advertising.js')}}"></script>
+    <script src="{{secure_asset('frontend/js/main.js')}}"></script>
     <script>
     $(document).ready(function() {
         let count = 0;
