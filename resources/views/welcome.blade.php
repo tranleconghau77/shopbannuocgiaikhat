@@ -547,15 +547,15 @@
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="{{secure_asset('frontend/js/bootstrap.min.js')}}"></script>
-    <script src="{{secure_asset('frontend/js/jquery.scrollUp.min.js')}}"></script>
-    <script src="{{secure_asset('frontend/js/price-range.js')}}"></script>
-    <script src="{{secure_asset('frontend/js/jquery.prettyPhoto.js')}}"></script>
-    <script src="{{secure_asset('frontend/js/owl.carousel.min.js')}}"></script>
-    <script src="{{secure_asset('frontend/js/recommand_product_slider.js')}}"></script>
-    <script src="{{secure_asset('frontend/js/option_payment.js')}}"></script>
-    <script src="{{secure_asset('frontend/js/advertising.js')}}"></script>
-    <script src="{{secure_asset('frontend/js/main.js')}}"></script>
+    <script src="{{asset('frontend/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('frontend/js/jquery.scrollUp.min.js')}}"></script>
+    <script src="{{asset('frontend/js/price-range.js')}}"></script>
+    <script src="{{asset('frontend/js/jquery.prettyPhoto.js')}}"></script>
+    <script src="{{asset('frontend/js/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('frontend/js/recommand_product_slider.js')}}"></script>
+    <script src="{{asset('frontend/js/option_payment.js')}}"></script>
+    <script src="{{asset('frontend/js/advertising.js')}}"></script>
+    <script src="{{asset('frontend/js/main.js')}}"></script>
     <script>
     $(document).ready(function() {
         let count = 0;
