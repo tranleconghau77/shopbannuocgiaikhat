@@ -10,9 +10,9 @@
     <title>Home | E-Shopper</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="{{secure_asset('frontend/css/bootstrap.min.css')}}" rel="stylesheet" />
-    <link href="{{secure_asset('frontend/css/word_animation.css')}}" rel="stylesheet" />
-    <link href="{{secure_asset('frontend/css/card_animation.css')}}" rel="stylesheet" />
+    <link href="{{secure_asset('./frontend/css/bootstrap.min.css')}}" rel="stylesheet" />
+    <link href="{{secure_asset('./frontend/css/word_animation.css')}}" rel="stylesheet" />
+    <link href="{{secure_asset('./frontend/css/card_animation.css')}}" rel="stylesheet" />
     <link href="{{secure_asset('frontend/css/fontawesome.min.css')}}" rel="stylesheet" />
     <link href="{{secure_asset('frontend/css/prettyPhoto.css')}}" rel="stylesheet" />
     <link href="{{secure_asset('frontend/css/price-range.css')}}" rel="stylesheet" />

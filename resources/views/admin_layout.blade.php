@@ -45,11 +45,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <script src="{{asset('backend/js/monthly.js')}}"></script>
+    <script src="{{asset('./backend/js/monthly.js')}}"></script>
 
-    <script src="{{asset('backend/js/raphael-min.js')}}">
+    <script src="{{asset('./backend/js/raphael-min.js')}}">
     </script>
-    <script src="{{asset('backend/js/morris.js')}}">
+    <script src="{{asset('./backend/js/morris.js')}}">
     </script>
 </head>
 
