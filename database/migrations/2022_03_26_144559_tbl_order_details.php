@@ -13,13 +13,14 @@ class TblOrderDetails extends Migration
      */
     public function up()
     {
+        //
         Schema::create('tbl_order_details', function (Blueprint $table) {
-            $table->bigIncrements('order_details_id');
+            $table->id('order_details_id');
             $table->integer('order_id');
             $table->integer('product_id');
             $table->string('product_name');
-            $table->float('product_price');
-            $table->integer('product_sales_quantity'); 
+            $table->double('product_price',8,2);
+            $table->integer('product_sales_quantity');
             $table->timestamps();
         });
     }
@@ -31,6 +32,7 @@ class TblOrderDetails extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_order_details');
+        //
+        Schema::drop('tbl_order_details');
     }
 }

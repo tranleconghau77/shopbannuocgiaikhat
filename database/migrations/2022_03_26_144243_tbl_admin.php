@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class TblPayment extends Migration
+class TblAdmin extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class TblPayment extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_payment', function (Blueprint $table) {
-            $table->bigIncrements('payment_id');
-            $table->string('payment_method');
-            $table->integer('payment_status'); 
+        //
+        Schema::create('tbl_admin', function (Blueprint $table) {
+            $table->id('admin_id');
+            $table->string('admin_email');
+            $table->string('admin_password');
+            $table->string('admin_name');
+            $table->string('admin_phone');
             $table->timestamps();
         });
     }
@@ -28,6 +31,7 @@ class TblPayment extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_payment');
+        //
+        Schema::drop('tbl_admin');
     }
 }
