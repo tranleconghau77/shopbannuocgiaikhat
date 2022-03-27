@@ -24,10 +24,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </script>
     <!-- bootstrap-css -->
 
-    <link href="{{asset('backend/css/bootstrap.min.css')}}" rel="stylesheet" />
+    <link href="{{public/backend/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Custom CSS -->
-    <link href="{{asset('backend/css/style.css')}}" rel='stylesheet' type='text/css' />
+    <link href="{{public/backend/css/style.css" rel='stylesheet' type='text/css' />
     <link href="css/style-responsive.css" rel="stylesheet" />
 
     <!-- font CSS -->
@@ -62,13 +62,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <p>Already Registered.<a href="{{URL::to('/admin')}}">Login</a></p>
         </div>
     </div>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/jquery.dcjqaccordion.2.7.js"></script>
-    <script src="js/scripts.js"></script>
-    <script src="js/jquery.slimscroll.js"></script>
-    <script src="js/jquery.nicescroll.js"></script>
+    <script src="public/js/bootstrap.js"></script>
+    <script src="public/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="public/js/scripts.js"></script>
+    <script src="public/js/jquery.slimscroll.js"></script>
+    <script src="public/js/jquery.nicescroll.js"></script>
     <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
-    <script src="js/jquery.scrollTo.js"></script>
+    <script src="public/js/jquery.scrollTo.js"></script>
 </body>
 
 </html>

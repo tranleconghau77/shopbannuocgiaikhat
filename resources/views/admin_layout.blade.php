@@ -22,34 +22,34 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     }
     </script>
     <!-- bootstrap-css -->
-    <link href="{{asset('backend/css/bootstrap.min.css')}}" rel="stylesheet" />
+    <link href="public/backend/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Custom CSS -->
-    <link href="{{asset('backend/css/style.css')}}" rel='stylesheet' type='text/css' />
-    <link href="{{asset('backend/css/style-responsive.css')}}" rel="stylesheet" />
+    <link href="public/backend/css/style.css" rel='stylesheet' type='text/css' />
+    <link href="public/backend/css/style-responsive.css" rel="stylesheet" />
 
     <!-- font CSS -->
     <link
         href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic'
         rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="{{asset('backend/css/font.css')}}" type="text/css" />
+    <link rel="stylesheet" href="public/backend/css/font.css" type="text/css" />
 
     <!-- font-awesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="{{asset('backend/css/morris.css')}}" type="text/css" />
+    <link rel="stylesheet" href="public/backend/css/morris.css" type="text/css" />
 
     <!-- calendar -->
-    <link rel="stylesheet" href="{{asset('backend/css/monthly.css')}}">
+    <link rel="stylesheet" href="public/backend/css/monthly.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
         integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <script src="{{asset('./backend/js/monthly.js')}}"></script>
+    <script src="public/backend/js/monthly.js"></script>
 
-    <script src="{{asset('./backend/js/raphael-min.js')}}">
+    <script src="public/backend/js/raphael-min.js">
     </script>
-    <script src="{{asset('./backend/js/morris.js')}}">
+    <script src="public/backend/js/morris.js">
     </script>
 </head>
 
@@ -180,14 +180,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <!--main content end-->
     </section>
 
-    <script src="{{asset('backend/js/bootstrap.js')}}"></script>
-    <script src="{{asset('backend/js/jquery.dcjqaccordion.2.7.js')}}"></script>
-    <script src="{{asset('backend/js/scripts.js')}}"></script>
-    <script src="{{asset('backend/js/jquery.slimscroll.js')}}"></script>
-    <script src="{{asset('backend/js/jquery.nicescroll.js')}}"></script>
+    <script src="public/backend/js/bootstrap.js"></script>
+    <script src="public/backend/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="public/backend/js/scripts.js"></script>
+    <script src="public/backend/js/jquery.slimscroll.js"></script>
+    <script src="public/backend/js/jquery.nicescroll.js"></script>
 
     <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
-    <script src="{{asset('backend/js/jquery.scrollTo.js')}}"></script>
+    <script src="public/backend/js/jquery.scrollTo.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
     $('.search-button-manager').click(function() {

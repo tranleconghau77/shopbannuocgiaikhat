@@ -10,16 +10,16 @@
     <title>Home | E-Shopper</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="/assets/public/frontend/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="{{asset('frontend/css/word_animation.css')}}" rel="stylesheet" />
+    <link href="public/frontend/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="public/frontend/css/word_animation.css" rel="stylesheet" />
     <link href="public/frontend/css/card_animation.css" rel="stylesheet" />
-    <link href="{{secure_asset('frontend/css/fontawesome.min.css')}}" rel="stylesheet" />
-    <link href="{{secure_asset('frontend/css/prettyPhoto.css')}}" rel="stylesheet" />
-    <link href="{{secure_asset('frontend/css/price-range.css')}}" rel="stylesheet" />
-    <link href="{{secure_asset('frontend/css/animate.css')}}" rel="stylesheet" />
-    <link href="{{secure_asset('frontend/css/main.css')}}" rel="stylesheet" />
-    <link href="{{secure_asset('frontend/css/owl.carousel.min.css')}}" rel="stylesheet" />
-    <link href="{{secure_asset('frontend/css/responsive.css')}}" rel="stylesheet" />
+    <link href="public/frontend/css/fontawesome.min.css" rel="stylesheet" />
+    <link href="public/frontend/css/prettyPhoto.css" rel="stylesheet" />
+    <link href="public/frontend/css/price-range.css" rel="stylesheet" />
+    <link href="public/frontend/css/animate.css" rel="stylesheet" />
+    <link href="public/frontend/css/main.css" rel="stylesheet" />
+    <link href="public/frontend/css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="public/frontend/css/responsive.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.slim.js"
         integrity="sha512-HNbo1d4BaJjXh+/e6q4enTyezg5wiXvY3p/9Vzb20NIvkJghZxhzaXeffbdJuuZSxFhJP87ORPadwmU9aN3wSA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -66,7 +66,7 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="logo pull-left">
-                            <a href="#"><img src="frontend/resource/images/home/logo.png" alt="" with="60"
+                            <a href="#"><img src="public/frontend/resource/images/home/logo.png" alt="" with="60"
                                     height="60" /></a>
                         </div>
 
@@ -248,7 +248,7 @@
                                             now</button></a>
                                 </div>
                                 <div class="col-sm-6" style="height:200px !important;">
-                                    <img src="{{asset('frontend/resource/images/home/sting-slider.jpg')}}"
+                                    <img src="public/frontend/resource/images/home/sting-slider.jpg"
                                         class="girl img-responsive" alt="" width="450" height="450" />
 
                                 </div>
@@ -263,7 +263,7 @@
                                             now</button></a>
                                 </div>
                                 <div class="col-sm-6" style="height:200px !important;">
-                                    <img src="{{asset('frontend/resource/images/home/bia333-slider.jpg')}}"
+                                    <img src="public/frontend/resource/images/home/bia333-slider.jpg"
                                         class="girl img-responsive" alt="" width="450" height="450" />
                                 </div>
                             </div>
@@ -278,7 +278,7 @@
                                             now</button></a>
                                 </div>
                                 <div class="col-sm-6" style="height:200px !important;">
-                                    <img src="{{asset('frontend/resource/images/home/aquafina-slider.jpeg')}}"
+                                    <img src="public/frontend/resource/images/home/aquafina-slider.jpeg"
                                         class="girl img-responsive" alt="" />
                                 </div>
                             </div>
@@ -364,7 +364,7 @@
                                                 {{csrf_field()}}
                                                 <div class="img">
                                                     <a href="{{URL::to('/product-details/'.$all_pro->product_id)}}">
-                                                        <img src="{{url('backend/uploads/product', $all_pro->product_image)}}"
+                                                        <img src="public/backend/uploads/product', $all_pro->product_image"
                                                             alt="" width="50" height="auto" />
                                                 </div>
                                                 <h4 style="color:orange">
@@ -548,15 +548,15 @@
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="{{asset('frontend/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('frontend/js/jquery.scrollUp.min.js')}}"></script>
-    <script src="{{asset('frontend/js/price-range.js')}}"></script>
-    <script src="{{asset('frontend/js/jquery.prettyPhoto.js')}}"></script>
-    <script src="{{asset('frontend/js/owl.carousel.min.js')}}"></script>
-    <script src="{{asset('frontend/js/recommand_product_slider.js')}}"></script>
-    <script src="{{asset('frontend/js/option_payment.js')}}"></script>
-    <script src="{{asset('frontend/js/advertising.js')}}"></script>
-    <script src="{{asset('frontend/js/main.js')}}"></script>
+    <script src="public/frontend/js/bootstrap.min.js"></script>
+    <script src="public/frontend/js/jquery.scrollUp.min.js"></script>
+    <script src="public/frontend/js/price-range.js"></script>
+    <script src="public/frontend/js/jquery.prettyPhoto.js"></script>
+    <script src="public/frontend/js/owl.carousel.min.js"></script>
+    <script src="public/frontend/js/recommand_product_slider.js"></script>
+    <script src="public/frontend/js/option_payment.js"></script>
+    <script src="public/frontend/js/advertising.js"></script>
+    <script src="public/frontend/js/main.js"></script>
     <script>
     $(document).ready(function() {
         let count = 0;
