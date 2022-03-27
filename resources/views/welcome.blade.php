@@ -363,7 +363,7 @@
                                                 {{csrf_field()}}
                                                 <div class="img">
                                                     <a href="{{URL::to('/product-details/'.$all_pro->product_id)}}">
-                                                        <img src="{{url('backend/uploads/product', $all_pro->product_image)}}"
+                                                        <img src="public/backend/uploads/product', $all_pro->product_image"
                                                             alt="" width="50" height="auto" />
                                                 </div>
                                                 <h4 style="color:orange">
