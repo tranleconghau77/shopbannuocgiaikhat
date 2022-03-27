@@ -16,7 +16,7 @@
                 }
                 ?>
                     <form action="{{URL::to('/save-login')}}" method="post">
-                        {{csrf_field()}}
+                        @csrf
                         <input type="email" name="email_account" placeholder="Email" />
                         <input type="password" name="password_account" placeholder="Password" />
                         <div>

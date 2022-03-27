@@ -22,7 +22,7 @@
                         <input type="hidden" class="cart_product_qty_{{$all_pro->product_id}}" value="1" name="">
                         <a href="{{URL::to('/product-details/'.$all_pro->product_id)}}">
                             <div class="img">
-                                <img src="{{url('backend/uploads/product', $all_pro->product_image)}}" alt="" width="50"
+                                <img src="public/backend/uploads/product', $all_pro->product_image" alt="" width="50"
                                     height="auto" />
                             </div>
                             <h2>{{number_format($all_pro->product_price)}}<span style="font-size:16px">đ</span></h2>
