@@ -59,11 +59,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 }
             ?>
             <form action="{{URL::to('/admin-dashboard')}}" method="post">
-                {{csrf_field()}}
+            @csrf
                 <input type="text" class="ggg" name="admin_email" placeholder="User name" required="">
                 <input type="password" class="ggg" name="admin_password" placeholder="Password" required="">
-                <!-- <span><input type="checkbox" />Remember Me</span>
-                <h6><a href="#">Forgot Password?</a></h6> -->
+                
                 <div class="clearfix"></div>
                 <input type="submit" value="Sign In" name="login">
             </form>
